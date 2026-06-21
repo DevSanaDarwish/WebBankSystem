@@ -1,7 +1,24 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USER\\source\\repos\\WebBankAPI\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{83D8DF9E-7726-4F3D-9242-04ABF7C63FFA}|..\\SharedDTOs\\SharedDTOs.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\shareddtos\\clientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7C18218-8FE2-4FD1-8E39-8A24C82A2AB5}|WebBankAPI.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\webbankapi\\controllers\\clientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7C18218-8FE2-4FD1-8E39-8A24C82A2AB5}|WebBankAPI.csproj|solutionrelative:controllers\\clientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C137BA84-9DAC-4261-9FFC-94B44D16E77A}|..\\WebBankBusinessLayer\\WebBankBusinessLayer.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\webbankbusinesslayer\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C137BA84-9DAC-4261-9FFC-94B44D16E77A}|..\\WebBankBusinessLayer\\WebBankBusinessLayer.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\webbankbusinesslayer\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD2832DB-E8B5-4026-AED1-4CF93894F3BA}|..\\WebBankDataAccessLayer\\WebBankDataAccessLayer.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\webbankdataaccesslayer\\clientdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +35,71 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClientsController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankAPI\\Controllers\\ClientsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClientsController.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankAPI\\Controllers\\ClientsController.cs",
+              "RelativeToolTip": "Controllers\\ClientsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-21T17:15:33.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Person.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankBusinessLayer\\Person.cs",
+              "RelativeDocumentMoniker": "..\\WebBankBusinessLayer\\Person.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankBusinessLayer\\Person.cs",
+              "RelativeToolTip": "..\\WebBankBusinessLayer\\Person.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-21T17:10:54.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Client.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankBusinessLayer\\Client.cs",
+              "RelativeDocumentMoniker": "..\\WebBankBusinessLayer\\Client.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankBusinessLayer\\Client.cs",
+              "RelativeToolTip": "..\\WebBankBusinessLayer\\Client.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-21T16:51:48.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ClientData.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankDataAccessLayer\\ClientData.cs",
+              "RelativeDocumentMoniker": "..\\WebBankDataAccessLayer\\ClientData.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankDataAccessLayer\\ClientData.cs",
+              "RelativeToolTip": "..\\WebBankDataAccessLayer\\ClientData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-21T16:15:19.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClientDTO.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\SharedDTOs\\ClientDTO.cs",
+              "RelativeDocumentMoniker": "..\\SharedDTOs\\ClientDTO.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\SharedDTOs\\ClientDTO.cs",
+              "RelativeToolTip": "..\\SharedDTOs\\ClientDTO.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABUAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-21T16:11:02.382Z",
+              "EditorCaption": ""
             }
           ]
         },

@@ -1,0 +1,16 @@
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\WebBankDataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\WebBankDataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\WebBankDataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\WebBankDataAccessLayer.AssemblyInfo.cs
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\WebBankDataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\WebBankDataAccessLayer.sourcelink.json
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\bin\Debug\net8.0\WebBankDataAccessLayer.deps.json
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\bin\Debug\net8.0\WebBankDataAccessLayer.dll
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\bin\Debug\net8.0\WebBankDataAccessLayer.pdb
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\bin\Debug\net8.0\SharedDTOs.dll
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\bin\Debug\net8.0\SharedDTOs.pdb
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\WebBankD.94E9F509.Up2Date
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\WebBankDataAccessLayer.dll
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\refint\WebBankDataAccessLayer.dll
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\WebBankDataAccessLayer.pdb
+C:\Users\USER\source\repos\WebBankSystem\WebBankDataAccessLayer\obj\Debug\net8.0\ref\WebBankDataAccessLayer.dll

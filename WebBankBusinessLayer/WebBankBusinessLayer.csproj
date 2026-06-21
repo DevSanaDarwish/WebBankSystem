@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SharedDTOs\SharedDTOs.csproj" />
     <ProjectReference Include="..\WebBankDataAccessLayer\WebBankDataAccessLayer.csproj" />
   </ItemGroup>
 

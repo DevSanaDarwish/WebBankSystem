@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "4rBpZMfQTvkvEJkYIT6wGGpBi3AYiODDOXucM3UXjsg=",
+  "Source": "WebBankAPI",
+  "BasePath": "_content/WebBankAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

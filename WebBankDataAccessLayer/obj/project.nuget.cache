@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bbDFq2eLRNtwLe3pc8z66KMUoKYudyY5rBt4PKWQk1gl+lr6dzjB0YF+vqoFDpO7CVXW4a0KIV6VvgdQklwKpw==",
+  "dgSpecHash": "iJG6L+NsEf7EITMM4k4zynJ8xYkI0CoCjuL4oXUBR8fEdmkR8rafT/Pij2/lbavYfEHxsLGN3ZmlmS3Eq8yz+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\source\\repos\\WebBankDataAccessLayer\\WebBankDataAccessLayer.csproj",
+  "projectFilePath": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankDataAccessLayer\\WebBankDataAccessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.bcl.cryptography\\8.0.0\\microsoft.bcl.cryptography.8.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.data.sqlclient\\7.0.1\\microsoft.data.sqlclient.7.0.1.nupkg.sha512",

@@ -1,0 +1,12 @@
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\obj\Debug\net8.0\SharedDTOs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\obj\Debug\net8.0\SharedDTOs.AssemblyInfoInputs.cache
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\obj\Debug\net8.0\SharedDTOs.AssemblyInfo.cs
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\obj\Debug\net8.0\SharedDTOs.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\obj\Debug\net8.0\SharedDTOs.sourcelink.json
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\bin\Debug\net8.0\SharedDTOs.deps.json
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\bin\Debug\net8.0\SharedDTOs.dll
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\bin\Debug\net8.0\SharedDTOs.pdb
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\obj\Debug\net8.0\SharedDTOs.dll
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\obj\Debug\net8.0\refint\SharedDTOs.dll
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\obj\Debug\net8.0\SharedDTOs.pdb
+C:\Users\USER\source\repos\WebBankSystem\SharedDTOs\obj\Debug\net8.0\ref\SharedDTOs.dll
