@@ -68,9 +68,26 @@ namespace WebBankAPI.Controllers
 
 
         [HttpGet("{id}", Name = "GetClientById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<ClientDTO> GetClientById(int id)
         {
+            if (id < 1)
+            {
+                return BadRequest($"Not accepted ID {id}");
+            }
 
+            Client client = Client.Find(id);
+
+            if (client == null)
+            {
+                return NotFound($"Client with ID {id} not found.");
+            }
+
+            ClientDTO CDTO = client.CDTO;
+
+            return Ok(CDTO);
         }
     }
 }
