@@ -61,14 +61,13 @@ namespace WebBankDataAccessLayer
                         {
                             clientsList.Add(new ClientDTO
                             (
-                                reader.GetInt32(reader.GetOrdinal("ClientID")),
-                                reader.GetString(reader.GetOrdinal("FirstName")),
-                                reader.GetString(reader.GetOrdinal("LastName")),
-                                reader.IsDBNull(reader.GetOrdinal("Email")) ? "Unknown" : reader.GetString(reader.GetOrdinal("Email")),
-                                //reader.GetString(reader.GetOrdinal("PinCode")),
-                                "****",
-                                reader.GetDecimal(reader.GetOrdinal("Balance")),
-                                reader.GetString(reader.GetOrdinal("AccountNumber"))
+                               reader.GetInt32(reader.GetOrdinal("ClientID")),
+                               reader.GetString(reader.GetOrdinal("FirstName")),
+                               reader.GetString(reader.GetOrdinal("LastName")),
+                               reader.IsDBNull(reader.GetOrdinal("Email")) ? "Unknown" : reader.GetString(reader.GetOrdinal("Email")),
+                               reader.GetDecimal(reader.GetOrdinal("Balance")),      
+                               reader.GetString(reader.GetOrdinal("AccountNumber")),
+                               reader.GetString(reader.GetOrdinal("PinCode"))
                             ));
                         }
                     }
@@ -136,14 +135,14 @@ namespace WebBankDataAccessLayer
                     {
                         if (reader.Read())
                         {
-                            clientDTO = new ClientDTO(
+                            clientDTO = new ClientDTO(                      
                         reader.GetInt32(reader.GetOrdinal("ClientID")),
                         reader.GetString(reader.GetOrdinal("FirstName")),
                         reader.GetString(reader.GetOrdinal("LastName")),
-                        reader.GetString(reader.GetOrdinal("Email")),
-                        reader.GetString(reader.GetOrdinal("PinCode")),
-                        reader.GetDecimal(reader.GetOrdinal("Balance")), 
-                        reader.GetString(reader.GetOrdinal("AccountNumber"))
+                        reader.IsDBNull(reader.GetOrdinal("Email")) ? "Unknown" : reader.GetString(reader.GetOrdinal("Email")),
+                        reader.GetDecimal(reader.GetOrdinal("Balance")),     
+                        reader.GetString(reader.GetOrdinal("AccountNumber")), 
+                        reader.GetString(reader.GetOrdinal("PinCode"))
                     );
                         }
                     }
@@ -157,6 +156,67 @@ namespace WebBankDataAccessLayer
             return clientDTO;
         }
 
-      
+        public static ClientDTO GetClientByAccountNumber(string accountNumber)
+        {
+            ClientDTO clientDTO = null;
+            using (var connection = new SqlConnection(_connectionString))
+            using (var command = new SqlCommand("SP_GetClientByAccountNumber", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@AccountNumber", accountNumber);
+
+                try
+                {
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            clientDTO = new ClientDTO(
+                                 reader.GetInt32(reader.GetOrdinal("ClientID")),
+                                 reader.GetString(reader.GetOrdinal("FirstName")),
+                                 reader.GetString(reader.GetOrdinal("LastName")),
+                                 reader.IsDBNull(reader.GetOrdinal("Email")) ? "Unknown" : reader.GetString(reader.GetOrdinal("Email")),
+                                 reader.GetDecimal(reader.GetOrdinal("Balance")),     
+                                 reader.GetString(reader.GetOrdinal("AccountNumber")),
+                                 reader.GetString(reader.GetOrdinal("PinCode"))
+                            );
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("DAL GetByAccNum Error: " + ex.Message);
+                }
+            }
+            return clientDTO;
+        }
+
+        public static bool UpdateClient(ClientUpdateDTO clientDTO)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            using (var command = new SqlCommand("SP_UpdateClient", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@ClientID", clientDTO.ClientID);
+                command.Parameters.AddWithValue("@FirstName", clientDTO.FirstName);
+                command.Parameters.AddWithValue("@LastName", clientDTO.LastName);
+                command.Parameters.AddWithValue("@Email", clientDTO.Email);
+                command.Parameters.AddWithValue("@Balance", clientDTO.Balance);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true; 
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("DAL UpdateClient Error: " + ex.Message);
+                    return false; 
+                }
+            }
+        }
     }
 }

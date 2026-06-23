@@ -25,9 +25,23 @@ namespace WebBankBusinessLayer
                     this.PersonInfo.FirstName,
                     this.PersonInfo.LastName,
                     this.PersonInfo.Email,
-                    this.PinCode,
-                    this.Balance,
-                    this.AccountNumber
+                    this.Balance,        
+                    this.AccountNumber, 
+                    this.PinCode
+                );
+            }
+        }
+
+        public ClientUpdateDTO UpdateCDTO
+        {
+            get
+            {
+                return new ClientUpdateDTO(
+                    this.ClientID,
+                    this.PersonInfo.FirstName,
+                    this.PersonInfo.LastName,
+                    this.PersonInfo.Email,
+                    this.Balance
                 );
             }
         }
@@ -36,7 +50,7 @@ namespace WebBankBusinessLayer
         {
             this.ClientID = CDTO.ClientID;
             this.PinCode = CDTO.PinCode;
-            this.Balance = CDTO.Balance;
+            this.Balance = CDTO.Balance ?? 0;
             this.AccountNumber = CDTO.AccountNumber;
 
             this.PersonInfo = new Person();
@@ -62,16 +76,22 @@ namespace WebBankBusinessLayer
             foreach (var client in rawList)
             {
                 client.AccountNumber = _MaskAccountNumber(client.AccountNumber);
+                client.PinCode = "****";
             }
 
             return rawList;
         }
 
-        private bool _AddNewStudent()
+        private bool AddNewClient()
         {
             this.ClientID = ClientData.AddNewClient(CDTO);
 
             return (this.ClientID != -1);
+        }
+
+        private bool UpdateClient()
+        {
+            return ClientData.UpdateClient(UpdateCDTO);
         }
 
         public bool Save()
@@ -79,7 +99,7 @@ namespace WebBankBusinessLayer
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewStudent())
+                    if (AddNewClient())
                     {
 
                         Mode = enMode.Update;
@@ -90,9 +110,9 @@ namespace WebBankBusinessLayer
                         return false;
                     }
 
-                //case enMode.Update:
+                case enMode.Update:
 
-                    //return _UpdateStudent();
+                    return UpdateClient();
 
             }
 
@@ -104,7 +124,7 @@ namespace WebBankBusinessLayer
             return ClientData.IsAccountNumberExist(accountNumber);
         }
 
-        public static bool IsValidClient(ClientDTO clientDTO, out string errorMessage)
+        public static bool IsValidClient(ClientUpdateDTO clientDTO, out string errorMessage)
         {
             errorMessage = string.Empty;
 
@@ -120,13 +140,43 @@ namespace WebBankBusinessLayer
                 return false;
             }
 
-            if (IsAccountNumberExist(clientDTO.AccountNumber))
-            {
-                errorMessage = "Account Number already exists. Please choose a unique number.";
-                return false;
-            }
+            //if (IsAccountNumberExist(clientDTO.AccountNumber))
+            //{
+            //    errorMessage = "Account Number already exists. Please choose a unique number.";
+            //    return false;
+            //}     
 
             return true;
+        }
+
+        public static Client FindByClientId(int clientId)
+        {
+            ClientDTO clientDTO = ClientData.GetClientByID(clientId);
+
+            if (clientDTO != null)
+            {
+                clientDTO.PinCode = "****";
+                clientDTO.AccountNumber = _MaskAccountNumber(clientDTO.AccountNumber);
+
+                return new Client(clientDTO, enMode.Update);
+            }
+
+            return null;
+        }
+
+        public static Client FindByAccountNumber(string accountNumber)
+        {
+            ClientDTO clientDTO = ClientData.GetClientByAccountNumber(accountNumber);
+
+            if (clientDTO != null)
+            {
+                //clientDTO.PinCode = "****";
+                //clientDTO.AccountNumber = _MaskAccountNumber(clientDTO.AccountNumber);
+
+                return new Client(clientDTO, enMode.Update); 
+            }
+
+            return null;
         }
     }
 }

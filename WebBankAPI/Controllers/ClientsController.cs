@@ -42,6 +42,11 @@ namespace WebBankAPI.Controllers
                 return BadRequest(validationError);
             }
 
+            if (Client.IsAccountNumberExist(newClientDTO.AccountNumber))
+            {
+                return BadRequest("Account Number already exists. Please choose a unique number.");
+            }
+
             Client client = new Client
                 (
                 new ClientDTO
@@ -50,9 +55,9 @@ namespace WebBankAPI.Controllers
                     newClientDTO.FirstName,
                     newClientDTO.LastName,
                     newClientDTO.Email,
-                    newClientDTO.PinCode,
-                    newClientDTO.Balance.Value,
-                    newClientDTO.AccountNumber
+                    newClientDTO.Balance,       
+                    newClientDTO.AccountNumber, 
+                    newClientDTO.PinCode
                 )
             );
 
@@ -78,7 +83,7 @@ namespace WebBankAPI.Controllers
                 return BadRequest($"Not accepted ID {id}");
             }
 
-            Client client = Client.Find(id);
+            Client client = Client.FindByClientId(id);
 
             if (client == null)
             {
@@ -88,6 +93,34 @@ namespace WebBankAPI.Controllers
             ClientDTO CDTO = client.CDTO;
 
             return Ok(CDTO);
+        }
+
+        [HttpPut("{accountNumber}", Name = "UpdateClientByAccountNumber")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<ClientDTO> UpdateClientByAccountNumber(string accountNumber, ClientUpdateDTO updatedClientDTO)
+        {
+            if (!Client.IsValidClient(updatedClientDTO, out string validationError))
+            {
+                return BadRequest(validationError);
+            }
+
+            Client client = Client.FindByAccountNumber(accountNumber);
+
+            if (client == null)
+            {
+                return NotFound($"Client with Account Number {accountNumber} not found.");
+            }
+
+            client.PersonInfo.FirstName = updatedClientDTO.FirstName;
+            client.PersonInfo.LastName = updatedClientDTO.LastName;
+            client.PersonInfo.Email = updatedClientDTO.Email;
+            client.Balance = updatedClientDTO.Balance.Value;
+
+            client.Save();
+
+            return Ok(client.CDTO);
         }
     }
 }
