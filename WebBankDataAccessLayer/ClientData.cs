@@ -90,7 +90,7 @@ namespace WebBankDataAccessLayer
 
                 command.Parameters.AddWithValue("@FirstName", newClientDTO.FirstName);
                 command.Parameters.AddWithValue("@LastName", newClientDTO.LastName);
-                command.Parameters.AddWithValue("@Email", newClientDTO.Email);
+                command.Parameters.AddWithValue("@Email", (object)newClientDTO.Email ?? DBNull.Value);
                 command.Parameters.AddWithValue("@PinCode", newClientDTO.PinCode);
                 command.Parameters.AddWithValue("@Balance", newClientDTO.Balance);
                 command.Parameters.AddWithValue("@AccountNumber", newClientDTO.AccountNumber);
@@ -202,7 +202,7 @@ namespace WebBankDataAccessLayer
                 command.Parameters.AddWithValue("@ClientID", clientDTO.ClientID);
                 command.Parameters.AddWithValue("@FirstName", clientDTO.FirstName);
                 command.Parameters.AddWithValue("@LastName", clientDTO.LastName);
-                command.Parameters.AddWithValue("@Email", clientDTO.Email);
+                command.Parameters.AddWithValue("@Email", (object)clientDTO.Email ?? DBNull.Value);
                 command.Parameters.AddWithValue("@Balance", clientDTO.Balance);
 
                 try
@@ -218,5 +218,30 @@ namespace WebBankDataAccessLayer
                 }
             }
         }
+
+        public static bool UpdateClientPinCode(string accountNumber, string newPinCode)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            using (var command = new SqlCommand("SP_UpdateClientPinCode", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@AccountNumber", accountNumber);
+                command.Parameters.AddWithValue("@NewPinCode", newPinCode);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true; 
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("DAL UpdateClientPinCode Error: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
     }
 }

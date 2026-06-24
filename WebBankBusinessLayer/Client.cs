@@ -61,7 +61,7 @@ namespace WebBankBusinessLayer
             Mode = cMode;
         }
 
-        private static string _MaskAccountNumber(string accountNumber)
+        public static string MaskAccountNumber(string accountNumber)
         {
             return accountNumber.Substring(0, 2) + "****" + accountNumber.Substring(accountNumber.Length - 2);
         }
@@ -75,7 +75,7 @@ namespace WebBankBusinessLayer
 
             foreach (var client in rawList)
             {
-                client.AccountNumber = _MaskAccountNumber(client.AccountNumber);
+                client.AccountNumber = MaskAccountNumber(client.AccountNumber);
                 client.PinCode = "****";
             }
 
@@ -92,6 +92,11 @@ namespace WebBankBusinessLayer
         private bool UpdateClient()
         {
             return ClientData.UpdateClient(UpdateCDTO);
+        }
+
+        public static bool UpdatePinCode(string accountNumber, string newPinCode)
+        {
+            return ClientData.UpdateClientPinCode(accountNumber, newPinCode);
         }
 
         public bool Save()
@@ -156,7 +161,7 @@ namespace WebBankBusinessLayer
             if (clientDTO != null)
             {
                 clientDTO.PinCode = "****";
-                clientDTO.AccountNumber = _MaskAccountNumber(clientDTO.AccountNumber);
+                clientDTO.AccountNumber = MaskAccountNumber(clientDTO.AccountNumber);
 
                 return new Client(clientDTO, enMode.Update);
             }
@@ -170,9 +175,6 @@ namespace WebBankBusinessLayer
 
             if (clientDTO != null)
             {
-                //clientDTO.PinCode = "****";
-                //clientDTO.AccountNumber = _MaskAccountNumber(clientDTO.AccountNumber);
-
                 return new Client(clientDTO, enMode.Update); 
             }
 

@@ -66,13 +66,20 @@ namespace WebBankAPI.Controllers
                 return StatusCode(500, "An internal server error occurred while adding the new client.");
             }
 
-            newClientDTO.ClientID = client.ClientID;
+            ClientDTO returnDTO = client.CDTO;
+            returnDTO.PinCode = "****";
+            returnDTO.AccountNumber = Client.MaskAccountNumber(returnDTO.AccountNumber);
 
-            return CreatedAtRoute("GetClientById", new { id = newClientDTO.ClientID }, newClientDTO);
+            return CreatedAtRoute("GetClientById", new { id = returnDTO.ClientID }, returnDTO);
+
+
+            //newClientDTO.ClientID = client.ClientID;
+
+            //return CreatedAtRoute("GetClientById", new { id = newClientDTO.ClientID }, newClientDTO);
         }
 
 
-        [HttpGet("{id}", Name = "GetClientById")]
+        [HttpGet("id{id}", Name = "GetClientById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -101,6 +108,11 @@ namespace WebBankAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<ClientDTO> UpdateClientByAccountNumber(string accountNumber, ClientUpdateDTO updatedClientDTO)
         {
+            if (string.IsNullOrWhiteSpace(accountNumber) || accountNumber.Length != 8)
+            {
+                return BadRequest("Invalid Account Number format. It must be exactly 8 characters long.");
+            }
+
             if (!Client.IsValidClient(updatedClientDTO, out string validationError))
             {
                 return BadRequest(validationError);
@@ -121,6 +133,49 @@ namespace WebBankAPI.Controllers
             client.Save();
 
             return Ok(client.CDTO);
+        }
+
+        [HttpPatch("update-pincode/{accountNumber}", Name = "UpdatePinCode")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult UpdatePinCode(string accountNumber, [FromBody] UpdatePinCodeDTO pinCodeDTO)
+        {
+            if (string.IsNullOrWhiteSpace(accountNumber) || accountNumber.Length != 8)
+            {
+                return BadRequest("Invalid Account Number format. It must be exactly 8 characters long.");
+            }
+
+            if (!Client.UpdatePinCode(accountNumber, pinCodeDTO.NewPinCode))
+            {
+                return NotFound($"Client with Account Number {accountNumber} not found.");
+            }
+
+            return Ok(pinCodeDTO);
+        }
+
+        [HttpGet("account/{accountNumber}", Name = "GetClientByAccountNumber")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<ClientDTO> GetClientByAccountNumber(string accountNumber)
+        {
+            if (string.IsNullOrWhiteSpace(accountNumber) || accountNumber.Length != 8)
+            {
+                return BadRequest("Invalid Account Number. It must be exactly 8 characters long.");
+            }
+
+            Client client = Client.FindByAccountNumber(accountNumber);
+
+            if (client == null)
+            {
+                return NotFound($"Client with Account Number {accountNumber} not found.");
+            }
+
+            ClientDTO CDTO = client.CDTO;
+            CDTO.PinCode = "****";
+            CDTO.AccountNumber = client.AccountNumber; 
+
+            return Ok(CDTO);
         }
     }
 }

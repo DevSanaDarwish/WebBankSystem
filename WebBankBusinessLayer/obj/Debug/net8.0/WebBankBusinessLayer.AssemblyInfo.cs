@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebBankBusinessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd6763a2bbbdd487f48c069c363ecb6a1542306b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43353308aaf410ea57518b9f46bfebb02c514347")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebBankBusinessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebBankBusinessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
