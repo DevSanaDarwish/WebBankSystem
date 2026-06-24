@@ -177,5 +177,23 @@ namespace WebBankAPI.Controllers
 
             return Ok(CDTO);
         }
+
+        [HttpDelete("delete/{accountNumber}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult DeleteClient(string accountNumber)
+        {
+            if (string.IsNullOrWhiteSpace(accountNumber) || accountNumber.Length != 8)
+            {
+                return BadRequest("Invalid Account Number format. It must be exactly 8 characters long.");
+            }
+
+            if (!Client.DeleteClientByAccountNumber(accountNumber, out string errorMessage))
+            {
+                return BadRequest(new { message = errorMessage });
+            }
+
+            return Ok(new { message = "Client account closed and deleted successfully." });
+        }
     }
 }

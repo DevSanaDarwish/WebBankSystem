@@ -159,6 +159,37 @@
   },
   {
     "ContainingType": "WebBankAPI.Controllers.ClientsController",
+    "Method": "DeleteClient",
+    "RelativePath": "api/Clients/delete/{accountNumber}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountNumber",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebBankAPI.Controllers.ClientsController",
     "Method": "GetClientById",
     "RelativePath": "api/Clients/id{id}",
     "HttpMethod": "GET",

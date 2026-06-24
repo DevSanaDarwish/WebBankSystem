@@ -243,5 +243,21 @@ namespace WebBankDataAccessLayer
             }
         }
 
+        public static bool DeleteClientByAccountNumber(string accountNumber)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            using (var command = new SqlCommand("SP_DeleteClientByAccountNumber", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@AccountNumber", accountNumber);
+
+                connection.Open();
+
+                int rowsAffected = (int)command.ExecuteScalar();
+
+                return (rowsAffected == 1);
+            }
+        }
+
     }
 }

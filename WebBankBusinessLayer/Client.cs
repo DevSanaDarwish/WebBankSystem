@@ -180,6 +180,26 @@ namespace WebBankBusinessLayer
 
             return null;
         }
+
+        public static bool DeleteClientByAccountNumber(string accountNumber, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+
+            Client client = FindByAccountNumber(accountNumber);
+            if (client == null)
+            {
+                errorMessage = "Client not found or already deleted.";
+                return false;
+            }
+
+            if (client.Balance > 0)
+            {
+                errorMessage = $"Cannot delete account. The client still has a balance of {client.Balance}. Account must be cleared first.";
+                return false;
+            }
+
+            return ClientData.DeleteClientByAccountNumber(accountNumber);
+        }
     }
 }
 
