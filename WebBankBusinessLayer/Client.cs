@@ -200,6 +200,68 @@ namespace WebBankBusinessLayer
 
             return ClientData.DeleteClientByAccountNumber(accountNumber);
         }
+
+        public static bool Deposit(string accountNumber, decimal amount, out decimal updatedBalance, out string errorMessage)
+        {
+            updatedBalance = 0;
+            errorMessage = string.Empty;
+
+            if (amount < 500 || amount > 50000)
+            {
+                errorMessage = "Deposit amount must be between 500$ and 50,000$.";
+                return false;
+            }
+
+            Client client = Client.FindByAccountNumber(accountNumber);
+            if (client == null)
+            {
+                errorMessage = $"Client with Account Number {accountNumber} not found or already inactive.";
+                return false;
+            }
+
+            if (!ClientData.DepositAmount(accountNumber, amount, out updatedBalance))
+            {
+                errorMessage = "An internal error occurred while updating the balance in the database.";
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool Withdraw(string accountNumber, decimal amount, out decimal updatedBalance, out string errorMessage)
+        {
+            updatedBalance = 0;
+            errorMessage = string.Empty;
+
+            if (amount < 50 || amount > 10000)
+            {
+                errorMessage = "Withdraw amount must be between 50$ and 10,000$.";
+                return false;
+            }
+
+            Client client = Client.FindByAccountNumber(accountNumber);
+            if (client == null)
+            {
+                errorMessage = $"Client with Account Number {accountNumber} not found.";
+                return false;
+            }
+
+            if (client.Balance < amount)
+            {
+                errorMessage = $"Insufficient balance. Your current balance is {client.Balance}$.";
+                return false;
+            }
+
+            if (!ClientData.WithdrawAmount(accountNumber, amount, out updatedBalance))
+            {
+                errorMessage = "An internal error occurred during the withdraw process.";
+                return false;
+            }
+
+            return true;
+        }
+
+
     }
 }
 

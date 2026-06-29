@@ -259,5 +259,91 @@ namespace WebBankDataAccessLayer
             }
         }
 
+        public static bool DepositAmount(string accountNumber, decimal amount, out decimal newBalance)
+        {
+            newBalance = -1;
+            bool isSuccess = false;
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlCommand command = new SqlCommand("SP_DepositByAccountNumber", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@accountNumber", accountNumber);
+                command.Parameters.AddWithValue("@amount", amount);
+
+                SqlParameter outputParam = new SqlParameter("@NewBalance", SqlDbType.Decimal)
+                {
+                    Precision = 18,
+                    Scale = 4,
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(outputParam);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    newBalance = (decimal)outputParam.Value;
+
+                    if (newBalance != -1)
+                    {
+                        isSuccess = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("DAL Error: " + ex.Message);
+                    isSuccess = false;
+                }
+            }
+
+            return isSuccess;
+        }
+
+        public static bool WithdrawAmount(string accountNumber, decimal amount, out decimal newBalance)
+        {
+            newBalance = -1;
+            bool isSuccess = false;
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlCommand command = new SqlCommand("SP_WithdrawByAccountNumber", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@accountNumber", accountNumber);
+                command.Parameters.AddWithValue("@amount", amount);
+
+                SqlParameter outputParam = new SqlParameter("@NewBalance", SqlDbType.Decimal)
+                {
+                    Precision = 18,
+                    Scale = 4,
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(outputParam);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    newBalance = (decimal)outputParam.Value;
+
+                    if (newBalance != -1)
+                    {
+                        isSuccess = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("DAL Error: " + ex.Message);
+                    isSuccess = false;
+                }
+            }
+
+            return isSuccess;
+        }
+
     }
 }
