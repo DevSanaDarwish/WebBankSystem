@@ -261,6 +261,32 @@ namespace WebBankBusinessLayer
             return true;
         }
 
+        public static bool TransferAmount(TransferRequestDTO transferRequest, out decimal senderNewBalance, out string errorMessage)
+        {
+            senderNewBalance = 0;
+            errorMessage = string.Empty;
+
+            if (string.Equals(transferRequest.SenderAccountNumber?.Trim(), transferRequest.ReceiverAccountNumber?.Trim(), StringComparison.OrdinalIgnoreCase))
+            {
+                errorMessage = "Sender account and receiver account cannot be the same.";
+                return false;
+            }
+
+            bool result = ClientData.TransferAmount(transferRequest, out senderNewBalance);
+
+            if (!result)
+            {
+                errorMessage = "Transfer failed. Please check accounts status or balance.";
+            }
+
+            return result;
+        }
+
+        public static List<TransferLogsDTO> GetAllTransferLogs()
+        {
+            return ClientData.GetAllTransferLogs();
+        }
+
 
     }
 }

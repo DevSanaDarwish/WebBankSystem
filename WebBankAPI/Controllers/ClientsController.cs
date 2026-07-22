@@ -258,5 +258,44 @@ namespace WebBankAPI.Controllers
 
             return Ok(CDTO);
         }
+
+        [HttpPost("transfer")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult ExecuteTransfer([FromBody] TransferRequestDTO transferRequest)
+        {
+            decimal senderNewBalance;
+            string errorMessage;
+
+            bool isSuccess = Client.TransferAmount(transferRequest, out senderNewBalance, out errorMessage);
+
+            if (!isSuccess)
+            {
+                return BadRequest(errorMessage);
+            }
+
+            return Ok(senderNewBalance);
+        }
+
+        [HttpGet("logs", Name = "GetTransferLogs")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<IEnumerable<TransferLogsDTO>> GetTransferLogs()
+        {
+            List<TransferLogsDTO> logsList = Client.GetAllTransferLogs();
+
+            if (logsList == null)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error. Database connection failed.");
+            }
+
+            if (logsList.Count == 0)
+            {
+                return NotFound("No transfer records found in the database.");
+            }
+
+            return Ok(logsList);
+        }
     }
 }

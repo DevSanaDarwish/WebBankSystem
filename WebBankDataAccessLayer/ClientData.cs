@@ -345,5 +345,101 @@ namespace WebBankDataAccessLayer
             return isSuccess;
         }
 
+        public static bool TransferAmount(TransferRequestDTO transferRequest, out decimal senderNewBalance)
+        {
+            bool isSuccess = false;
+            senderNewBalance = 0;
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SP_ExecuteTransfer", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@SenderAccountNumber", transferRequest.SenderAccountNumber);
+                    command.Parameters.AddWithValue("@ReceiverAccountNumber", transferRequest.ReceiverAccountNumber);
+                    command.Parameters.AddWithValue("@Amount", transferRequest.TransferAmount);
+                    command.Parameters.AddWithValue("@CreatedByUserID", transferRequest.CreatedByUserID);
+
+                    SqlParameter isSuccessParam = new SqlParameter("@IsSuccess", SqlDbType.Bit)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(isSuccessParam);
+
+                    SqlParameter newBalanceParam = new SqlParameter("@SenderNewBalance", SqlDbType.Decimal)
+                    {
+                        Direction = ParameterDirection.Output,
+                        Precision = 18,
+                        Scale = 2
+                    };
+                    command.Parameters.Add(newBalanceParam);
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery(); 
+
+                        isSuccess = (isSuccessParam.Value != DBNull.Value) && Convert.ToBoolean(isSuccessParam.Value);
+
+                        if (isSuccess && newBalanceParam.Value != DBNull.Value)
+                        {
+                            senderNewBalance = Convert.ToDecimal(newBalanceParam.Value);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        isSuccess = false;
+                        throw new Exception("Error executing transfer in DAL: " + ex.Message);
+                    }
+                }
+            }
+
+            return isSuccess;
+        }
+
+        public static List<TransferLogsDTO> GetAllTransferLogs()
+        {
+            List<TransferLogsDTO> logsList = new List<TransferLogsDTO>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SP_GetAllTransferLogs", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                TransferLogsDTO log = new TransferLogsDTO
+                                {
+                                    TransferLogID = Convert.ToInt32(reader["TransferLogID"]),
+                                    Date = Convert.ToDateTime(reader["Date"]),
+                                    SourceAcc = reader["SourceAcc"].ToString(),
+                                    DestinationAcc = reader["DestinationAcc"].ToString(),
+                                    Amount = Convert.ToDecimal(reader["Amount"]),
+                                    SourceBalance = Convert.ToDecimal(reader["SourceBalance"]),
+                                    DestinationBalance = Convert.ToDecimal(reader["DestinationBalance"]),
+                                    Username = reader["Username"].ToString()
+                                };
+
+                                logsList.Add(log);
+                            }
+                        } 
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                } 
+            } 
+
+            return logsList;
+        }
     }
 }

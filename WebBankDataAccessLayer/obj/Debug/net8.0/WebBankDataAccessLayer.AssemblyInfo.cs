@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebBankDataAccessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c100768646d9ec9e1b0d11c22518709621f619c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47809b58ee551e2eee2f309ada980a515a587f69")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebBankDataAccessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebBankDataAccessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
