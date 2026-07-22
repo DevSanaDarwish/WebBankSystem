@@ -297,5 +297,20 @@ namespace WebBankAPI.Controllers
 
             return Ok(logsList);
         }
+
+        [HttpGet("total-balances", Name = "GetTotalBalances")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<decimal> GetTotalBalances()
+        {
+            decimal total = Client.GetTotalBalances();
+
+            if (total == -1)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving total balances from database.");
+            }
+
+            return Ok(total);
+        }
     }
 }

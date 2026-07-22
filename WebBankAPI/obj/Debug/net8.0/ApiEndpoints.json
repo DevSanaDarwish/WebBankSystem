@@ -317,6 +317,31 @@
   },
   {
     "ContainingType": "WebBankAPI.Controllers.ClientsController",
+    "Method": "GetTotalBalances",
+    "RelativePath": "api/Clients/total-balances",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Decimal",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebBankAPI.Controllers.ClientsController",
     "Method": "ExecuteTransfer",
     "RelativePath": "api/Clients/transfer",
     "HttpMethod": "POST",

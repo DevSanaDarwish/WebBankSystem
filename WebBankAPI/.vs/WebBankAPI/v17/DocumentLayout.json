@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{E7C18218-8FE2-4FD1-8E39-8A24C82A2AB5}|WebBankAPI.csproj|solutionrelative:controllers\\clientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C137BA84-9DAC-4261-9FFC-94B44D16E77A}|..\\WebBankBusinessLayer\\WebBankBusinessLayer.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\webbankbusinesslayer\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{83D8DF9E-7726-4F3D-9242-04ABF7C63FFA}|..\\SharedDTOs\\SharedDTOs.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\shareddtos\\transferrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FD2832DB-E8B5-4026-AED1-4CF93894F3BA}|..\\WebBankDataAccessLayer\\WebBankDataAccessLayer.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\webbankdataaccesslayer\\clientdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{83D8DF9E-7726-4F3D-9242-04ABF7C63FFA}|..\\SharedDTOs\\SharedDTOs.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\shareddtos\\transferlogsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C137BA84-9DAC-4261-9FFC-94B44D16E77A}|..\\WebBankBusinessLayer\\WebBankBusinessLayer.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\webbankbusinesslayer\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{83D8DF9E-7726-4F3D-9242-04ABF7C63FFA}|..\\SharedDTOs\\SharedDTOs.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\shareddtos\\transferrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{83D8DF9E-7726-4F3D-9242-04ABF7C63FFA}|..\\SharedDTOs\\SharedDTOs.csproj|c:\\users\\user\\source\\repos\\webbanksystem\\shareddtos\\transferlogsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TransferLogsDTO.cs",
               "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\SharedDTOs\\TransferLogsDTO.cs",
               "RelativeDocumentMoniker": "..\\SharedDTOs\\TransferLogsDTO.cs",
@@ -50,7 +50,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "TransferRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\SharedDTOs\\TransferRequestDTO.cs",
               "RelativeDocumentMoniker": "..\\SharedDTOs\\TransferRequestDTO.cs",
@@ -58,7 +58,8 @@
               "RelativeToolTip": "..\\SharedDTOs\\TransferRequestDTO.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T18:55:59.38Z"
+              "WhenOpened": "2026-07-19T18:55:59.38Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -68,20 +69,20 @@
               "RelativeDocumentMoniker": "Controllers\\ClientsController.cs",
               "ToolTip": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankAPI\\Controllers\\ClientsController.cs",
               "RelativeToolTip": "Controllers\\ClientsController.cs",
-              "ViewState": "AQIAABYBAAAAAAAAAAAAACwBAAABAAAA",
+              "ViewState": "AQIAACABAAAAAAAAAAAAADEBAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-19T18:33:19.044Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Client.cs",
               "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankBusinessLayer\\Client.cs",
               "RelativeDocumentMoniker": "..\\WebBankBusinessLayer\\Client.cs",
               "ToolTip": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankBusinessLayer\\Client.cs",
               "RelativeToolTip": "..\\WebBankBusinessLayer\\Client.cs",
-              "ViewState": "AQIAAOYAAAAAAAAAAAAuwB4BAAAAAAAA",
+              "ViewState": "AQIAAAYBAAAAAAAAAAAAACkBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-19T18:27:27.46Z",
               "EditorCaption": ""
@@ -94,7 +95,7 @@
               "RelativeDocumentMoniker": "..\\WebBankDataAccessLayer\\ClientData.cs",
               "ToolTip": "C:\\Users\\USER\\source\\repos\\WebBankSystem\\WebBankDataAccessLayer\\ClientData.cs",
               "RelativeToolTip": "..\\WebBankDataAccessLayer\\ClientData.cs",
-              "ViewState": "AQIAAI8BAAAAAAAAAAAAAJABAABAAAAA",
+              "ViewState": "AQIAALwBAAAAAAAAAAAAANABAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-19T17:34:34.856Z",
               "EditorCaption": ""

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebBankAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47809b58ee551e2eee2f309ada980a515a587f69")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+152b87f9732d11c7db3601d97a8ff31a4576f657")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebBankAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebBankAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
